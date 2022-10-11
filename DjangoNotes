@@ -1,0 +1,17 @@
+django-admin 
+dhango-admin startproject mysite
+wsgi = webserver gateway interface
+to run server : python3 manage.py runserver
+to get into env : python3 -m venv djangocourse    source/djangocourse/bin/activate
+
+
+2nd video
+
+A single project can contain multiple apps
+to create a new app : python3 manage.py startapp blog
+
+
+
+3rd video
+here we are adding html to our previous server
+DOnt forget to add our apps config from our app folder to  setting.py(installed apps)
