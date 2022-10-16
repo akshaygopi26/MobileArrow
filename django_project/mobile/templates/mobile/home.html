@@ -1,14 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-    </head>
-<body>
-    <h1>
-        Mobiile Home!!!
-    </h1>
-    {% for item in mobile_details %}
-        <h3>{{item.brand}}            {{item.model}}</h3>
-    {% endfor %}
-</body>
-</html> 
+{% extends "mobile/base.html" %}
+{% block content %}
+<h1>
+    Mobiile Home!!!
+</h1>
+{% for item in mobile_details %}
+
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ item.brand }}</a>
+            <small class="text-muted">{{ item.base_color }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ item.model}}</a></h2>
+        <p class="article-content">Battery :{{ item.battery_capacity }}</p>
+    </div>
+</article>
+{% endfor %}
+{% endblock content %}

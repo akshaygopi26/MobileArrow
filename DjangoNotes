@@ -15,3 +15,13 @@ to create a new app : python3 manage.py startapp blog
 3rd video
 here we are adding html to our previous server
 DOnt forget to add our apps config from our app folder to  setting.py(installed apps)
+adding html about and home
+for common part in both html we will add base.html  ---------tempelate inheritance
+
+
+4th video
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py createsuperuser
+akshay test@123
+sridevi test@123
