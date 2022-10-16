@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 # Register your models here.
-
+#test
 
 mobile_details=[{
     'brand': 'Apple',
