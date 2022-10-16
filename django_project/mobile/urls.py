@@ -3,5 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.home,name='mobile-home'),
-    path('about/', views.about,name='mobile-about')
+    path('index/', views.home,name='mobile-home'),
+    path('about/', views.about,name='mobile-about'),
+    path('viewall/', views.viewall,name='mobile-viewall')
+
 ]

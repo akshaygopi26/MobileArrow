@@ -1,0 +1,39 @@
+{% load static %}
+body{
+    background-image: url("{% static 'mobile/backgrount.jpg' %}");
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.navigation{
+    background-color:darksalmon;
+    margin-top:0%   ;
+    height: 60px;
+}
+.navigation a{
+    color:white;
+    height: 100%;
+    width: 20%;
+}
+#sidebar{
+    
+    margin: 0;
+    width: 15%;
+    size:10pt;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color:rgb(156, 60, 60);
+}
+#details{
+    float: right;
+    width: 80%;
+}
+
+.dropdown{
+    height: 40px;
+    width: 100%;
+    background-color: black;
+    color: white;
+}

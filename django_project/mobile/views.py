@@ -57,3 +57,9 @@ def home(request):
 def about(request):
     return render(request,'mobile/about.html')
     # return HttpResponse('<h1>Mobile About</h1>')
+
+def viewall(request):
+    context={
+        'mobile_details':mobile_details
+    }
+    return render(request,'mobile/viewall.html',context) 

@@ -1,0 +1,15 @@
+{% extends "mobile/base.html" %}
+{% block content %}
+<h1>
+Mobiile Details
+</h1>
+{% for item in mobile_details %}
+<h3>{{item.brand}} {{item.model}}</h3>
+<p>Base color: {{item.base_color}}<br>
+    ROM:{{item.ROM}}<br>
+    RAM:{{item.RAM}}<br>
+    ratings:{{item.ratings}}<br>
+<p>
+{% endfor %}
+<h3>...</h3>
+{% endblock content %}
