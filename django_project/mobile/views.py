@@ -63,3 +63,8 @@ def viewall(request):
         'mobile_details':mobile_details
     }
     return render(request,'mobile/viewall.html',context) 
+
+def action_show_page(request):
+    print("-----------------")
+    print(request.GET)
+    return render(request, 'mobile/action_show_page.html')

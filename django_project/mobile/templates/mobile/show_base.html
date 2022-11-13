@@ -5,7 +5,7 @@
           
         <link rel="stylesheet" href="{% static 'mobile/style.css' %}" type="text/css">
         <title>HOME</title>
-        <img height="100px" width="100px" src="{% static 'mobile/logo.png' %}" alt="icon">
+        <img height="100px" width="10px" src="{% static 'mobile/logo.png' %}" alt="icon">
         <h1 style="font-family:Arial, Helvetica, sans-serif ; display: inline; ">&nbsp&nbspMobile Arrow</h1>
     </head>
     <body style="
@@ -21,7 +21,22 @@
                     <a href="/viewall/">VIEW ALL MOBILES</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#">COMPARE</a>     
             </nav>
-            <div>
+            <aside id="sidebar">
+
+                <form action="/action_show_page" method="get">
+                    <select name="brand" id="brand" class ="dropdown">
+                        <option value="none">Select brand</option>
+                        <option value="apple">Apple</option>
+                        <option value="samsung">Samsung</option>
+                        <option value="realme">Realme</option>
+                        <option value="poco">Poco</option>
+                        <option value="xiomi">Xiomi</option>
+                    </select>
+                    <button type="submit" value="Submit">Show Mobiles</button>
+                </form>
+
+            </aside>
+            <div id="details">
                 {% block content %}{% endblock %}
                 
             </div>
