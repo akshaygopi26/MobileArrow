@@ -1,0 +1,18 @@
+{% extends "mobile/base.html" %}
+{% block content %}
+<h1>
+    {{object.brand}} {{ object.model}}
+</h1>
+<h2>
+    <p>Base color: {{object.base_color}}<br>
+        ROM:{{object.ROM}}<br>
+        RAM:{{object.RAM}}<br>
+        ratings:{{object.ratings}}<br>
+        Battery :{{ object.battery_capacity }}<br>
+    <p>
+</h2>
+            
+
+        <h2><a class="article-title" href="#">Next>></a></h2>
+        <p class="article-content"></p>
+{% endblock content %}
