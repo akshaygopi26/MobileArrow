@@ -45,11 +45,14 @@ def viewall(request):
     }
     return render(request,'mobile/viewall.html',context) 
 
+
+
 def action_show_page(request):
     print(request.GET)
     pricerange=request.GET['price']
     if (pricerange=='none'):
-        price=[0,10000]
+        maxprice=Mobile.objects.aggregate(Max('sales_price'))
+        price=[0,maxprice]
     else:
         price=pricerange.split('-')
         if price[1]=='':
@@ -78,15 +81,15 @@ def action_show_page(request):
         ram=ramlist
     
     if(request.GET['battery']=='none'):
-        battery=[0,10000]
+        maxbat=Mobile.objects.aggregate(Max('battery_capacity'))
+        battery=[0,maxbat]
     else:
         battery=request.GET['battery'].split('-')
         if(battery[1]==''):
             maxbat=Mobile.objects.aggregate(Max('battery_capacity'))
             battery[1]=maxbat
-            print(maxbat)
-            battery[1]=10000
     print(price)
+    print(Mobile.objects.filter(Q(RAM__in=ram)).values())
     context={
 
         'mobile_details':Mobile.objects.filter(
@@ -100,6 +103,17 @@ def action_show_page(request):
     }
     return render(request, 'mobile/viewall.html',context)
 
+
+def action_compare_page(request):
+    ids=request.GET.getlist('model1')
+    print(ids)
+    context={
+        'mobile_detail1':Mobile.objects.filter(id=ids[0]).values(),
+        'mobile_detail2':Mobile.objects.filter(id=ids[1]).values(),
+        
+    }
+    return render(request, 'mobile/compare_display.html',context)
+
 class MobileDetailView(DetailView):
     model=Mobile
 
@@ -110,13 +124,9 @@ class Compare(ListView):
 
 
 def compare(request):
-    #print(Mobile.objects.all())
-    #print(Mobile.objects.filter(Q(id='1') | Q(id='2')).values())
-    print(Mobile.objects.filter(Q(brand__icontains='realme k20')))
 
     context={
-        'mobile_detail1':Mobile.objects.filter(id='1').values(),
-        'mobile_detail2':Mobile.objects.filter(id='2').values(),
-        'brands' :Mobile.objects.values('brand').distinct()
+        'mobilenames1' :Mobile.objects.values()..distinct()
+        
     }
     return render(request, 'mobile/compare.html',context)
