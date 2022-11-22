@@ -13,8 +13,35 @@ from django.views.generic import (
 mobile_details = Mobile.objects.all()
 
 def home(request):
+
+    ratings=Mobile.objects.values_list('ratings').distinct()
+    ratingslist=[]
+    for r in ratings:
+        ratingslist.append(float(r[0]))
+
+    topselling=Mobile.objects.values_list('units_sold').distinct()
+    topsellinglist=[]
+    for ts in topselling:
+        topsellinglist.append(int(ts[0]))
+    print(max(topsellinglist))
+    print(Mobile.objects.filter(units_sold=max(topsellinglist)).values())
+    
+    ram=Mobile.objects.values_list('RAM').distinct()
+    ramlist=[]
+    for r in ram:
+        ramlist.append(int(r[0]))
+
+    dicount=Mobile.objects.values_list('discount_percent').distinct()
+    dicountlist=[]
+    for d in dicount:
+        dicountlist.append(float(d[0]))
+    
     context={
-        'mobile_details':mobile_details
+        'mobile_details':mobile_details,
+        'topRAM': Mobile.objects.filter(RAM=max(ramlist)).values(),
+        'topDiscount': Mobile.objects.filter(discount_percent=max(dicountlist)).values(),
+        'topRated': Mobile.objects.filter(ratings=max(ratingslist)).values(),
+        'topSelling': Mobile.objects.filter(units_sold=max(topsellinglist)).values()
     }
     return render(request,'mobile/home.html',context)
     # return HttpResponse('<h1>Mobile Home</h1>')
