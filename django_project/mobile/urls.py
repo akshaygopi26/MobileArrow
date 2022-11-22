@@ -12,6 +12,7 @@ urlpatterns = [
     path('viewall/',Viewall.as_view(),name='mobile-viewall'),
     path('mobile/<int:pk>',MobileDetailView.as_view(),name='mobile-detail'), 
     path('action_show_page/', views.action_show_page, name='action-show-page'),
+    path('action_compare_page/', views.action_compare_page, name='action-compare-page'),
     path('compare/', views.compare, name='mobile-compare')
 
 ]
