@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Mobile
 from django.db.models import Q
 from django.db.models import Max
+from .utils import get_plot
 
 from django.views.generic import (
     ListView,
@@ -14,6 +15,28 @@ mobile_details = Mobile.objects.all()
 
 def home(request):
 
+    mobile_details = Mobile.objects.all()
+    units_sold=[x.units_sold for x in mobile_details]
+    brand=[x.brand for x in mobile_details]
+    dict_mob_brand={}
+
+    for i in range(len(brand)):
+        # dict_mob_brand[brand[i]]=units_sold[i]
+        if brand[i] in dict_mob_brand:
+            dict_mob_brand[brand[i]]+=int(units_sold[i])
+        else:
+            dict_mob_brand[brand[i]]=int(units_sold[i])
+    
+    brand_new_list=[]
+    units_sold_new_list=[]
+    for item in dict_mob_brand:
+        # print(dict_mob_brand[item])
+        brand_new_list.append(item)
+        units_sold_new_list.append(dict_mob_brand[item])
+    units_sold_new_list=[int(i/1000) for i in units_sold_new_list]
+    graph=get_plot(brand_new_list,units_sold_new_list)
+
+    #---------------------------------------------------------------------------------
     ratings=Mobile.objects.values_list('ratings').distinct()
     ratingslist=[]
     for r in ratings:
@@ -41,7 +64,8 @@ def home(request):
         'topRAM': Mobile.objects.filter(RAM=max(ramlist)).values(),
         'topDiscount': Mobile.objects.filter(discount_percent=max(dicountlist)).values(),
         'topRated': Mobile.objects.filter(ratings=max(ratingslist)).values(),
-        'topSelling': Mobile.objects.filter(units_sold=max(topsellinglist)).values()
+        'topSelling': Mobile.objects.filter(units_sold=max(topsellinglist)).values(),
+        'graph':graph
     }
     return render(request,'mobile/home.html',context)
     # return HttpResponse('<h1>Mobile Home</h1>')
