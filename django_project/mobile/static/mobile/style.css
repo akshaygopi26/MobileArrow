@@ -1,6 +1,6 @@
 {% load static %}
 body{
-    background-image: url("{% static 'mobile/backgrount.jpg' %}");
+    background-image: url('{% static "mobile/background.jpg" %}');
     background-position-x: center;
     background-position-y: center;
     background-repeat: no-repeat;
@@ -10,6 +10,7 @@ body{
     background-color:darksalmon;
     margin-top:0%   ;
     height: 60px;
+    position: fixed;
 }
 .navigation a{
     color:white;
@@ -37,3 +38,16 @@ body{
     background-color: black;
     color: white;
 }
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  
+  #compare-left{
+    float:left;
+  }
+
+  #compare-right{
+    float:right;
+  }

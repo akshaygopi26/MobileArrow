@@ -8,35 +8,24 @@
         <img height="100px" width="100px" src="{% static 'mobile/logo.png' %}" alt="icon">
         <h1 style="font-family:Arial, Helvetica, sans-serif ; display: inline; ">&nbsp&nbspMobile Arrow</h1>
     </head>
-    <body >
+    <body style="
+    background-image: url('{% static "mobile/background.jpg" %}'); 
+    background-position-x: 'center';
+    background-position-y: 'center';
+    background-repeat: 'no-repeat';
+    background-attachment: 'fixed';">
         <section>
             <nav class="navigation">
                     <br>
                     <a href="/index/">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="/viewall/">VIEW ALL MOBILES</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="#">COMPARE</a>
-                    
-                  
+                    <a href="/compare/">COMPARE</a>     
             </nav>
-            <aside id="sidebar">
-
-                <!--form action="/action_page.php"-->
-                    <select name="brand" id="brand" class ="dropdown">
-                        <option value="none">Select brand</option>
-                        <option value="apple">Apple</option>
-                        <option value="samsung">Samsung</option>
-                        <option value="realme">Realme</option>
-                        <option value="poco">Poco</option>
-                        <option value="xiomi">Xiomi</option>
-                    </select>
-                    <!--input type="submit" value="Submit">
-                </form-->
-
-            </aside>
-            <div id="details">
+            <div>
                 {% block content %}{% endblock %}
                 
             </div>
         </section>
     </body>
+    <!--End of code-->
 </html>

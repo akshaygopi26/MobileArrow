@@ -1,0 +1,90 @@
+{% extends "mobile/base.html" %}
+{% block content %}
+<style>
+   table{
+    position: center;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+
+   } 
+   th,td{
+    border: 2px solid;
+    border-collapse: collapse;
+    height: 40px;
+    background-color: darkgray;
+   }
+   th{
+    background-color:darkcyan;
+
+   }
+   display-comparison{
+
+    text-align: center;
+   }
+</style>
+<div id="display-comparison">
+
+ 
+    <div id="compare-mid">
+        <table>
+            {% for item1 in mobile_detail1 %}
+            {% for item2 in mobile_detail2 %}
+            <tr>
+                <th></th>
+            <td><h3><a class="article-title" href="{% url 'mobile-detail' item1.id%}">{{item1.brand}} {{ item1.model}}</a></h3></td>
+            <td><h3><a class="article-title" href="{% url 'mobile-detail' item2.id%}">{{item2.brand}} {{ item2.model}}</a></h3></td>
+            </tr>
+
+            <tr>
+                <th>Base Color</th><td>{{item1.base_color}}</td><td>{{item2.base_color}}</td>
+            </tr>
+
+            <tr>
+                <th>Processor</th><td>{{item1.processor}}</td><td>{{item2.processor}}</td>
+            </tr>
+
+            <tr>
+                <th>Screen size</th><td>{{item1.screen_size}}</td><td>{{item2.screen_size}}</td>
+            </tr>
+
+            <tr>
+                <th>ROM</th><td>{{item1.ROM}}</td><td>{{item2.ROM}}</td>
+            </tr>
+
+            <tr>
+                <th>RAM</th><td>{{item1.RAM}}</td><td>{{item2.RAM}}</td>
+            </tr>
+
+            <tr>
+                <th>Battery Capacity</th><td>{{item1.battery_capacity}}</td><td>{{item2.battery_capacity}}</td>
+            </tr>
+
+            <tr>
+                <th>Ratings</th><td>{{item1.ratings}}</td><td>{{item2.ratings}}</td>
+            </tr>
+
+            <tr>
+                <th>Price</th><td>{{item1.sales_price}}</td><td>{{item2.sales_price}}</td>
+            </tr>
+
+            <tr>
+                <th>Discount</th><td>{{item1.discount_percent}}%</td><td>{{item2.discount_percent}}%</td>
+            </tr>
+            {% endfor %} 
+            {% endfor %}
+            
+        </table>
+    
+    </div>
+
+ 
+</div>
+<p>
+    <h3> 
+        <a class="article-title" href="/compare/"> Back </a></h3>
+</p>
+
+
+{% endblock content %}
+                

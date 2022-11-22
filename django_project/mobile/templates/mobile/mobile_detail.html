@@ -1,0 +1,49 @@
+{% extends "mobile/base.html" %}
+{% block content %}
+<h1>
+    {{object.brand}} {{ object.model}}
+</h1>
+
+<table>
+    <tr>
+        <th>Base color</th>
+        <td>{{object.base_color}}</td>
+    </tr>
+    <tr>
+        <th>Processor</th>
+        <td>{{object.processor}}</td>
+    </tr>
+    <tr>
+        <th>RAM</th>
+        <td>{{object.RAM}}</td>
+    </tr>
+    <tr>
+        <th>ROM</th>
+        <td>{{object.ROM}}</td>
+    </tr>
+    <tr>
+        <th>Ratings</th>
+        <td>{{object.ratings}}</td>
+    </tr>
+    <tr>
+        <th>Battery</th>
+        <td>{{object.battery_capacity}}</td>
+    </tr>
+    <tr>
+        <th>Screen Size</th>
+        <td>{{object.screen_size}}</td>
+    </tr>
+    <tr>
+        <th>Price</th>
+        <td>{{object.sales_price}}</td>
+    </tr>
+    <tr>
+        <th>Discount</th>
+        <td>{{object.discount_percent}}%</td>
+    </tr>
+</table>
+            
+
+        <h2><a class="article-title" href="/viewall/">View ALL>></a></h2>
+        <p class="article-content"></p>
+{% endblock content %}
