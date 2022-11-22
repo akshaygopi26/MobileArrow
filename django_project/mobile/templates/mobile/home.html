@@ -1,9 +1,47 @@
 {% extends "mobile/base.html" %}
 {% block content %}
 
+<aside id="sidebar" style="float:right;">
+
+<form action="/action_show_page" method="get">
+    <select name="brand" id="brand" class ="dropdown">
+
+        <option value="none">Select brand</option>
+        {% for brand in brands %}
+        <option value='{{brand.brand}}'>{{brand.brand}}</option>
+        {% endfor %} 
+    </select>
+    Select price range:<select name="price" class="dropdown">
+        <option value="none">Select price range</option>
+        <option value="0-20000"><20000</option>
+        <option value="20000-40000">20000-40000</option>
+        <option value="40000-60000">40000-60000</option>
+        <option value="60000-80000">60000-80000</option>
+        <option value="80000-">>80000</option><br> 
+    </select>
+    Select RAM:
+    {% for r in ram %}
+        <input type="checkbox" id="RAM" name="RAM" value="{{r.RAM}}">
+        <label for="RAM"> {{r.RAM}} GB</label><br>
+    {% endfor %} 
+
+    Select battery capacity range:<select name="battery" class="dropdown">
+        <option value="none">Select battery</option>
+        <option value="0-2000"><2000mAh</option>
+        <option value="2000-4000">2000mAh-4000mAh</option>
+        <option value="4000-6000">4000mAh-6000mAh</option>
+        <option value=">6000-">>60000mAh</option><br> 
+    </select>
+    <button type="submit" value="Submit">Show Mobiles</button>
+</form>
+
+</aside>
 
     <a href="/viewall/">Show all mobile data</a>
     
-
+<footer>
+    <!--p style="color: grey;">credits: W3schools</p-->
+    <div 
+</footer>
 {% endblock content %}
                 

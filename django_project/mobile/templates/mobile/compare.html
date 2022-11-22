@@ -5,12 +5,14 @@
         width: 30%;
     height: 60px;
     background-color: burlywood;
+    font-size: 14px;
 }
 button{
     width: 40%;
     height: 60px;
     text-align: center;
     background-color:dimgray;
+    font-size: 18px;
 
 }
 form{
@@ -32,7 +34,7 @@ form{
 
         {% for m in mobilenames1 %}
 
-        <option value='{{m.id}}'>{{m.brand}} {{m.model}}</option>
+        <option value='{{m.id}}'>{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</option>
         
         {% endfor %} 
     </select>
@@ -49,7 +51,7 @@ form{
 
         {% for m in mobilenames1 %}
 
-        <option value='{{m.id}}'>{{m.brand}} {{m.model}}</option>
+        <option value='{{m.id}}'>{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</option>
         
         {% endfor %} 
 
