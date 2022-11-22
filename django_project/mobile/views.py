@@ -126,7 +126,7 @@ class Compare(ListView):
 def compare(request):
 
     context={
-        'mobilenames1' :Mobile.objects.values()..distinct()
+        'mobilenames1' :Mobile.objects.values()
         
     }
     return render(request, 'mobile/compare.html',context)
