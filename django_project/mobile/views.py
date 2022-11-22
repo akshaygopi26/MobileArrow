@@ -105,8 +105,7 @@ def action_show_page(request):
 
 
 def action_compare_page(request):
-    ids=request.GET.getlist('model1')
-    print(ids)
+    ids=request.GET.getlist('model')
     context={
         'mobile_detail1':Mobile.objects.filter(id=ids[0]).values(),
         'mobile_detail2':Mobile.objects.filter(id=ids[1]).values(),

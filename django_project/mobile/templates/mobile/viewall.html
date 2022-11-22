@@ -1,15 +1,26 @@
 {% extends "mobile/show_base.html" %}
 {% block content %}
+<style>
+#mobiledata{
+        border:1px solid;
+        background-color: antiquewhite;
+        margin-right: 5%;
+    }
+</style>
+    
+
 <h1>
 Mobile Details
 </h1>
 {% for item in mobile_details %}
+<div id="mobiledata">
 <h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3>
 <p>Base color: {{item.base_color}}<br>
     ROM:{{item.ROM}}<br>
     RAM:{{item.RAM}}<br>
     ratings:{{item.ratings}}<br>
 <p>
+</div>
 {% endfor %}
 
 {% if is_paginated %}
@@ -32,5 +43,4 @@ Mobile Details
     {% endif %}
 
     {% endif %}
-<h3>...</h3>
 {% endblock content %}
