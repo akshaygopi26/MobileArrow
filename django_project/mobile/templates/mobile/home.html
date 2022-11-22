@@ -12,32 +12,30 @@
         color:whitesmoke;
         text-decoration: none;
         margin-left: 8px;
+        font-size:larger;
     }
 </style>
 <aside id="sidebar" >
+    <div>
+        <p style="font-size:x-large;">Highest Sold:</p><br>
+        {% for m in topSelling %}
+        <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}}<br>&nbsp&nbspColor: {{m.base_color}}<br>&nbsp&nbspRAM: {{m.RAM}}GB RAM <br>&nbsp&nbspROM:{{m.ROM}}GB ROM </a><br>
+        {% endfor %}
 
-    <p style="font-size: large;">Highest Sold:</p><br>
-    {% for m in topSelling %}
-    <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</a><br>
-    {% endfor %}
+    </div>
+    
+    <div>
+        <p style="font-size: x-large;">MAX DISCOUNT:</p><br>
+        {% for m in topDiscount %}
+        <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}}<br>&nbsp&nbspColor: {{m.base_color}}<br>&nbsp&nbspRAM: {{m.RAM}}GB RAM <br>&nbsp&nbspROM:{{m.ROM}}GB ROM </a><br>
+        {% endfor %}
 
-    <p style="font-size: large;">Best in RAM:</p><br>
-    {% for m in topRAM %}
-    <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</a><br>
-    {% endfor %}
-
-    <p style="font-size: large;">MAX DISCOUNT:</p><br>
-    {% for m in topDiscount %}
-    <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</a><br>
-    {% endfor %}
-
-    <p style="font-size: large;">Top rated:</p><br>
-    {% for m in topRated %}
-    <a href="{% url 'mobile-detail' m.id%}">{{m.brand}} {{m.model}} {{m.base_color}}( {{m.RAM}}GB RAM | {{m.ROM}}GB ROM )</a><br>
-    {% endfor %}
+    </div>
 </aside>
+<div>
 
-    <a href="/viewall/">Show all mobile data</a>
+    <a style="color: black;" href="/viewall/">Show all mobile data</a>
+</div>
     
 <footer>
     <!--p style="color: grey;">credits: W3schools</p-->
