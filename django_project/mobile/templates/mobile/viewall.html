@@ -1,7 +1,7 @@
 {% extends "mobile/show_base.html" %}
 {% block content %}
 <h1>
-Mobiile Details
+Mobile Details
 </h1>
 {% for item in mobile_details %}
 <h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3>

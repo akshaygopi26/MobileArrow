@@ -4,60 +4,151 @@
 {% for item in mobile_detail1 %}
 
 <form action="/action_show_page" method="get">
-    <select name="brand1" style="width: 10%;">
+        <select name="brand1" style="width: 10%;">
+
+            <option value="none">Select brand</option>
+            {% for brand in brands %}
+            <option value='{{brand.brand}}'>{{brand.brand}}</option>
+            {% endfor %} 
+        </select>
+        <input type="text" id= "model1" name="model1" style="width: 20%;">
+        {% for item in mobile_detail2 %}
+    <select name="brand2" style="width: 10%;">
 
         <option value="none">Select brand</option>
         {% for brand in brands %}
         <option value='{{brand.brand}}'>{{brand.brand}}</option>
         {% endfor %} 
     </select>
-    <input type="text" id= "model1" name="model1" style="width: 20%;">
-<table>
-    <tr>
-      <td><h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3></td>
-    </tr>
+    <input type="text" id= "model2" name="model2" style="width: 20%;">
+    <button type="submit" value="Submit">Compare</button>
+    </form>
 
 
-    <tr>
-        <td>Base color: {{item.base_color}}</td>
-    </tr>
 
-    <tr>
-        <td>ROM:{{item.ROM}}</td>
-    </tr>
+    <div id="display-comparison">
 
-    <tr>
-        <td>RAM:{{item.RAM}}</td>
-    </tr>
+    <div id="compare-left"style="">
+      <table>
+        <tr></tr>
+        <tr><th>Base Color</th></tr>
+        <tr><th>Processor</th></tr>
+        <tr><th>Screen size</th></tr>
+        <tr><th>ROM</th></tr>
+        <tr><th>RAM</th></tr>
+        <tr><th>Battery Capacity</th></tr>
+        <tr><th>Ratings</th></tr>
+        <tr><th>Price</th></tr>
+        <tr><th>Discount</th></tr>
+      </table>  
+      </div>
+    <div id="compare-mid"style="
+    width: 30%;
+    position: fixed;
+    float: left;
+">
+        <table>
+        <tr>
+        <td><h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3></td>
+        </tr>
 
-    <tr>
-        <td>ratings:{{item.ratings}}</td>
-    </tr>
 
-    
-  </table>
+        <tr>
+            <td>{{item.base_color}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.processor}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.screen_size}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.ROM}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.RAM}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.battery_capacity}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.ratings}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.sales_price}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.discount_percent}}%</td>
+        </tr>
+
+        
+    </table>
 
 
-{% endfor %} 
-
-{% for item in mobile_detail2 %}
-<select name="brand2" style="width: 10%;">
-
-    <option value="none">Select brand</option>
-    {% for brand in brands %}
-    <option value='{{brand.brand}}'>{{brand.brand}}</option>
     {% endfor %} 
-</select>
-<input type="text" id= "model2" name="model2" style="width: 20%;">
-<button type="submit" value="Submit">Compare</button>
-</form>
-<h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3>
-<p>Base color: {{item.base_color}}<br>
-    ROM:{{item.ROM}}<br>
-    RAM:{{item.RAM}}<br>
-    ratings:{{item.ratings}}<br>
-<p>
-{% endfor %} 
+</div>
+<div id="compare-right" style="
+width: 40%;
+/* position: fixed; */
+float: right;
+">
+    <table>
+        <tr>
+        <td><h3><a class="article-title" href="{% url 'mobile-detail' item.id%}">{{item.brand}} {{ item.model}}</a></h3></td>
+        </tr>
 
+
+        <tr>
+            <td>{{item.base_color}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.processor}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.screen_size}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.ROM}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.RAM}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.battery_capacity}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.ratings}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.sales_price}}</td>
+        </tr>
+
+        <tr>
+            <td>{{item.discount_percent}}%</td>
+        </tr>
+
+        
+
+        
+    </table>
+    {% endfor %} 
+</div>
+
+</div>
 {% endblock content %}
                 

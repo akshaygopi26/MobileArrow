@@ -48,11 +48,14 @@ def viewall(request):
 def action_show_page(request):
     print(request.GET)
     pricerange=request.GET['price']
-    price=pricerange.split('-')
-    if price[1]=='':
-        maxprice=Mobile.objects.aggregate(Max('sales_price'))
-        price[1]=maxprice
-        price[1]='100000'
+    if (pricerange=='none'):
+        price=[0,10000]
+    else:
+        price=pricerange.split('-')
+        if price[1]=='':
+            maxprice=Mobile.objects.aggregate(Max('sales_price'))
+            price[1]=maxprice
+            price[1]=100000
     
     brand=request.GET['brand']
     if(brand=='none'):
@@ -60,6 +63,10 @@ def action_show_page(request):
         brandlist=[]
         for b in brand:
             brandlist.append(b[0])
+        brand=brandlist
+    else:
+        brandlist=[]
+        brandlist.append(brand)
         brand=brandlist
 
     ram=request.GET.getlist('RAM')
@@ -69,14 +76,17 @@ def action_show_page(request):
         for r in ram:
             ramlist.append(r[0])
         ram=ramlist
-
-    battery=request.GET['battery'].split('-')
-    if(battery[1]==''):
-        maxbat=Mobile.objects.aggregate(Max('battery_capacity'))
-        battery[1]=maxbat
-        print(maxbat)
-        battery[1]='10000'
-
+    
+    if(request.GET['battery']=='none'):
+        battery=[0,10000]
+    else:
+        battery=request.GET['battery'].split('-')
+        if(battery[1]==''):
+            maxbat=Mobile.objects.aggregate(Max('battery_capacity'))
+            battery[1]=maxbat
+            print(maxbat)
+            battery[1]=10000
+    print(price)
     context={
 
         'mobile_details':Mobile.objects.filter(
