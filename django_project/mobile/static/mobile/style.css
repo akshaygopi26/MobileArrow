@@ -22,7 +22,8 @@ body{
     width: 15%;
     size:10pt;
     height: 100%;
-    position: fixed;
+    /* position: fixed; */
+    position: absolute;
     overflow: auto;
     background-color:rgb(156, 60, 60);
 }
@@ -49,4 +50,12 @@ table, th, td {
 
   #compare-right{
     float:right;
+  }
+  
+
+  .scroll{
+    height: 1000px;
+    width: 800px;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
